@@ -71,9 +71,10 @@ too - it's ignored in the kickstart repo to make maintenance easier, but it's
 <details><summary> Linux and Mac </summary>
 
 ```sh
-git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone https://github.com/joehdodd/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
+<<<<<<< HEAD
 </details>
 
 <details><summary> Windows </summary>
@@ -92,6 +93,8 @@ git clone https://github.com/nvim-lua/kickstart.nvim.git "${env:LOCALAPPDATA}\nv
 
 </details>
 
+=======
+>>>>>>> e2c2e21 (Update README.md)
 ### Post Installation
 
 Start Neovim
