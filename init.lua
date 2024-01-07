@@ -283,7 +283,7 @@ require('lazy').setup({
       {
         "<leader>fE",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+          require("neo-tree.command").execute({ toggle = true, dir = vim.fn.getcwd() })
         end,
         desc = "Explorer NeoTree (cwd)",
       },
