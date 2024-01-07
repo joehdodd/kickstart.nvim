@@ -59,6 +59,7 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
+-- vim.opt.autochdir = true
 
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
@@ -322,6 +323,7 @@ require('lazy').setup({
           use_libuv_file_watcher = true,
         },
         window = {
+          width = 30,
           position = "right",
           mappings = {
             ["<space>"] = "none",
@@ -422,7 +424,19 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
-}, {})
+}, {
+  defaults = {
+    lazy = false
+  },
+  performance = {
+    rtp = {
+      reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
+      disabled_plugins = {
+        "netrwPlugin",
+      },
+    },
+  },
+})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
