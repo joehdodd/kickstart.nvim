@@ -6,32 +6,32 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
-return {{
+return { {
     'navarasu/onedark.nvim',
     lazy = false,
     config = function()
         require('onedark').setup({
-                style = 'dark',
-                term_colors = true,
-                toggle_style_list = {'light', 'dark'},
-                colors = {
-                    bg = '#00ffffff',
-                },
-                highlights = {
-                    NeoTreeNormal = { bg = '$bg'},
-                    NeoTreeNormalNC = { bg = '$bg'},
-                    NeoTreeEndOfBuffer = { bg = '$bg' },
-                }
+            style = 'dark',
+            term_colors = true,
+            toggle_style_list = { 'light', 'dark' },
+            colors = {
+                bg = '#00ffffff',
+            },
+            highlights = {
+                NeoTreeNormal = { bg = '$bg' },
+                NeoTreeNormalNC = { bg = '$bg' },
+                NeoTreeEndOfBuffer = { bg = '$bg' },
+            }
         })
         require('onedark').load()
     end,
-    keys = {{
+    keys = { {
         '<leader>tc',
         function()
             require('onedark').toggle()
         end,
         desc = 'Toggle Color Scheme'
-    }}
+    } }
 }, {
     'akinsho/toggleterm.nvim',
     version = "*",
@@ -43,19 +43,19 @@ return {{
             direction = "float"
         })
     end,
-    keys = {{
+    keys = { {
         '<leader>tt',
         function()
             require('toggleterm').toggle()
         end,
         desc = 'Toggle Terminal'
-    }},
+    } },
 }, {
     "folke/which-key.nvim",
     opts = {
-      defaults = {
-        ["<leader>f"] = { name = "+[F]ile Explorer" },
-      },
+        defaults = {
+            ["<leader>f"] = { name = "+[F]ile Explorer" },
+        },
     },
     config = function(_, opts)
         local wk = require("which-key")
@@ -66,12 +66,12 @@ return {{
     'nvim-neo-tree/neo-tree.nvim',
     version = '*',
     lazy = false,
-    dependencies = {'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'MunifTanjim/nui.nvim'},
-    keys = {{
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'MunifTanjim/nui.nvim' },
+    keys = { {
         '<leader>fe',
         '<cmd>Neotree toggle<cr>',
         desc = 'File Explorer - Toggle'
-    }},
+    } },
     config = function()
         require('neo-tree').setup {
             window = {
@@ -100,13 +100,13 @@ return {{
     event = "InsertEnter",
     config = function()
         require("copilot").setup({
-          suggestion = {
-            auto_trigger = true,
-            debounce = 100,
-            keymap = {
-              accept = "<C-l>",
-            },
-          }
+            suggestion = {
+                auto_trigger = true,
+                debounce = 100,
+                keymap = {
+                    accept = "<C-l>",
+                },
+            }
         })
     end
 }, {
@@ -132,19 +132,19 @@ return {{
                 ["cmp.entry.get_documentation"] = true
             }
         },
-        routes = {{
+        routes = { {
             filter = {
                 event = "msg_show",
-                any = {{
+                any = { {
                     find = "%d+L, %d+B"
                 }, {
                     find = "; after #%d+"
                 }, {
                     find = "; before #%d+"
-                }}
+                } }
             },
             view = "mini"
-        }},
+        } },
         presets = {
             bottom_search = true,
             command_palette = true,
@@ -152,7 +152,7 @@ return {{
             inc_rename = true
         }
     },
-    keys = {{
+    keys = { {
         "<S-Enter>",
         function()
             require("noice").redirect(vim.fn.getcmdline())
@@ -193,7 +193,7 @@ return {{
         silent = true,
         expr = true,
         desc = "Scroll forward",
-        mode = {"i", "n", "s"}
+        mode = { "i", "n", "s" }
     }, {
         "<c-b>",
         function()
@@ -204,10 +204,10 @@ return {{
         silent = true,
         expr = true,
         desc = "Scroll backward",
-        mode = {"i", "n", "s"}
-    }},
+        mode = { "i", "n", "s" }
+    } },
     dependencies = {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify"
     }
-}}
+}, { 'mhartington/formatter.nvim' } }
