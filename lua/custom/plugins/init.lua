@@ -3,6 +3,44 @@
 --
 -- See the kickstart.nvim README for more information
 return {{
+    "folke/which-key.nvim",
+    opts = {
+      defaults = {
+        ["<leader>f"] = { name = "+[F]ile Explorer" },
+      },
+    },
+    config = function(_, opts)
+        local wk = require("which-key")
+        wk.setup(opts)
+        wk.register(opts.defaults)
+    end,
+}, {
+    'navarasu/onedark.nvim',
+    lazy = false,
+    config = function()
+        require('onedark').setup({
+                style = 'dark',
+                term_colors = true,
+                toggle_style_list = {'light', 'dark'},
+                colors = {
+                    bg = '#00ffffff',
+                },
+                highlights = {
+                    NeoTreeNormal = { bg = '$bg'},
+                    NeoTreeNormalNC = { bg = '$bg'},
+                    NeoTreeEndOfBuffer = { bg = '$bg' },
+                }
+        })
+        require('onedark').load()
+    end,
+    keys = {{
+        '<leader>tt',
+        function()
+            require('onedark').toggle()
+        end,
+        desc = 'Toggle Theme'
+    }}
+}, {
     'akinsho/toggleterm.nvim',
     version = "*",
     opts = {
@@ -58,18 +96,14 @@ return {{
     event = "InsertEnter",
     config = function()
         require("copilot").setup({
-            suggestion = {
-                enabled = false
+          suggestion = {
+            auto_trigger = true,
+            debounce = 100,
+            keymap = {
+              accept = "<C-l>",
             },
-            panel = {
-                enabled = false
-            }
+          }
         })
-    end
-}, {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-        require("copilot_cmp").setup()
     end
 }, {
     'akinsho/bufferline.nvim',
@@ -168,9 +202,8 @@ return {{
         desc = "Scroll backward",
         mode = {"i", "n", "s"}
     }},
-    dependencies = { -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    "MunifTanjim/nui.nvim", -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
-    "rcarriga/nvim-notify"}
+    dependencies = {
+        "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify"
+    }
 }}
