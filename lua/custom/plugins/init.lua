@@ -210,4 +210,4 @@ return { {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify"
     }
-}, { 'mhartington/formatter.nvim' } }
+} }
