@@ -2,19 +2,11 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrwSettings = 1
+vim.g.loaded_netrwFileHandlers = 1
 return {{
-    "folke/which-key.nvim",
-    opts = {
-      defaults = {
-        ["<leader>f"] = { name = "+[F]ile Explorer" },
-      },
-    },
-    config = function(_, opts)
-        local wk = require("which-key")
-        wk.setup(opts)
-        wk.register(opts.defaults)
-    end,
-}, {
     'navarasu/onedark.nvim',
     lazy = false,
     config = function()
@@ -34,19 +26,30 @@ return {{
         require('onedark').load()
     end,
     keys = {{
-        '<leader>tt',
+        '<leader>tc',
         function()
             require('onedark').toggle()
         end,
-        desc = 'Toggle Theme'
+        desc = 'Toggle Color Scheme'
     }}
 }, {
     'akinsho/toggleterm.nvim',
     version = "*",
-    opts = {
-        open_mapping = [[<c-\>]],
-        direction = "float"
-    }
+    lazy = false,
+    config = function()
+        require("toggleterm").setup({
+            size = 20,
+            open_mapping = [[<c-\>]],
+            direction = "float"
+        })
+    end,
+    keys = {{
+        '<leader>tt',
+        function()
+            require('toggleterm').toggle()
+        end,
+        desc = 'Toggle Terminal'
+    }},
 }, {
     "folke/which-key.nvim",
     opts = {
@@ -62,6 +65,7 @@ return {{
 }, {
     'nvim-neo-tree/neo-tree.nvim',
     version = '*',
+    lazy = false,
     dependencies = {'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'MunifTanjim/nui.nvim'},
     keys = {{
         '<leader>fe',
