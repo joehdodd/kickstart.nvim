@@ -10,82 +10,51 @@ return {{
         direction = "float"
     }
 }, {
-    "nvim-neo-tree/neo-tree.nvim",
-    dependencies = {"nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    "MunifTanjim/nui.nvim"},
-    branch = "v3.x",
-    cmd = "Neotree",
+    "folke/which-key.nvim",
+    opts = {
+      defaults = {
+        ["<leader>f"] = { name = "+[F]ile Explorer" },
+      },
+    },
+    config = function(_, opts)
+        local wk = require("which-key")
+        wk.setup(opts)
+        wk.register(opts.defaults)
+    end,
+}, {
+    'nvim-neo-tree/neo-tree.nvim',
+    version = '*',
+    dependencies = {'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'MunifTanjim/nui.nvim'},
     keys = {{
-        "<leader>fe",
-        function()
-            require("neo-tree.command").execute({
-                toggle = true,
-                dir = vim.env.HOME
-            })
-        end,
-        desc = "Explorer NeoTree (root dir)"
-    }, {
-        "<leader>fE",
-        function()
-            require("neo-tree.command").execute({
-                toggle = true,
-                dir = vim.fn.getcwd()
-            })
-        end,
-        desc = "Explorer NeoTree (cwd)"
-    }, {
-        "<leader>ge",
-        function()
-            require("neo-tree.command").execute({
-                source = "git_status",
-                toggle = true
-            })
-        end,
-        desc = "Git explorer"
-    }, {
-        "<leader>be",
-        function()
-            require("neo-tree.command").execute({
-                source = "buffers",
-                toggle = true
-            })
-        end,
-        desc = "Buffer explorer"
+        '<leader>fe',
+        '<cmd>Neotree toggle<cr>',
+        desc = 'File Explorer - Toggle'
     }},
-    deactivate = function()
-        vim.cmd([[Neotree close]])
-    end,
-    init = function()
-        if vim.fn.argc(-1) == 1 then
-            local stat = vim.loop.fs_stat(vim.fn.argv(0))
-            if stat and stat.type == "directory" then
-                require("neo-tree")
-            end
-        end
-    end,
     config = function()
-        require("neo-tree").setup({
-            sources = {"filesystem", "buffers", "git_status", "document_symbols"},
-            open_files_do_not_replace_types = {"terminal", "Trouble", "trouble", "qf", "Outline"},
-            filesystem = {
-                bind_to_cwd = false,
-                follow_current_file = {
-                    enabled = true
-                },
-                use_libuv_file_watcher = true
-            },
+        require('neo-tree').setup {
             window = {
                 width = 30,
                 position = "right",
                 mappings = {
                     ["<space>"] = "none"
                 }
+            },
+            filesystem = {
+                filtered_items = {
+                    visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"
+                    hide_dotfiles = false,
+                    hide_gitignored = true
+                },
+                follow_current_file = {
+                    enabled = true -- This will find and focus the file in the active buffer every time
+                }
             }
-        })
+        }
     end
 }, {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
+    build = ':Copilot auth',
     event = "InsertEnter",
     config = function()
         require("copilot").setup({
