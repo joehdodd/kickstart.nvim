@@ -3,31 +3,14 @@
 --
 -- See the kickstart.nvim README for more information
 return { {
-    'navarasu/onedark.nvim',
+    "catppuccin/nvim",
     lazy = false,
+    priority = 1000,
+    name = "catppuccin",
     config = function()
-        require('onedark').setup({
-            style = 'dark',
-            term_colors = true,
-            toggle_style_list = { 'light', 'dark' },
-            colors = {
-                bg = '#00ffffff',
-            },
-            highlights = {
-                NeoTreeNormal = { bg = '$bg' },
-                NeoTreeNormalNC = { bg = '$bg' },
-                NeoTreeEndOfBuffer = { bg = '$bg' },
-            }
-        })
-        require('onedark').load()
-    end,
-    keys = { {
-        '<leader>tc',
-        function()
-            require('onedark').toggle()
-        end,
-        desc = 'Toggle Color Scheme'
-    } }
+        require("catppuccin").setup()
+        vim.cmd.colorscheme = "catppuccin"
+    end
 }, {
     'nvim-neo-tree/neo-tree.nvim',
     version = '*',
@@ -97,13 +80,14 @@ return { {
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
+    after = 'catppuccin',
     config = function()
         require("bufferline").setup({
+            highlights = require("catppuccin.groups.integrations.bufferline").get(),
             options = {
                 diagnostics = "nvim_lsp"
             }
         })
-        vim.opt.termguicolors = true
     end
 }, {
     "zbirenbaum/copilot.lua",
