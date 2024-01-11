@@ -516,6 +516,9 @@ require('telescope').setup {
       },
     },
   },
+  extensions = {
+
+  }
 }
 
 -- Enable telescope fzf native, if installed
