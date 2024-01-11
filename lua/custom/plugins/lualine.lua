@@ -39,7 +39,6 @@ ins_right {
 
 return {
   'nvim-lualine/lualine.nvim',
-  -- See `:help lualine.txt`
   config = function()
     lualine.setup(config)
   end
