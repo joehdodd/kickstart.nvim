@@ -4,6 +4,13 @@ return {
     priority = 1000,
     name = "catppuccin",
     config = function()
-        vim.cmd("colorscheme catppuccin")
-    end
+        require("catppuccin").setup({
+            flavor = "macchiato",
+            styles = {
+                keywords = { "bold", "italic" },
+            },
+        })
+        vim.cmd("colorscheme catppuccin-macchiato")
+    end,
+    keys = { { "<leader>tcd", ":Catppuccin macchiato<CR>", desc = "Catppuccin Macchiato" }, { "<leader>tcl", ":Catppuccin latte<CR>", desc = "Catppuccin Latte" } },
 }
