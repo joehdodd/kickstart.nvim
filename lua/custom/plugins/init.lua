@@ -3,24 +3,6 @@
 --
 -- See the kickstart.nvim README for more information
 return { {
-    'akinsho/toggleterm.nvim',
-    version = "*",
-    lazy = false,
-    config = function()
-        require("toggleterm").setup({
-            size = 20,
-            open_mapping = [[<c-\>]],
-            direction = "float"
-        })
-    end,
-    keys = { {
-        '<leader>tt',
-        function()
-            require('toggleterm').toggle()
-        end,
-        desc = 'Toggle Terminal'
-    } },
-}, {
     "folke/which-key.nvim",
     opts = {
         defaults = {
