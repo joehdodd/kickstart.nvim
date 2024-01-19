@@ -8,6 +8,13 @@ return {
             styles = {
                 keywords = { "bold", "italic" },
             },
+            color_overrides = {
+                latte = {
+                    rosewater = "#ca3c3a",
+
+                },
+            }
+
         })
         vim.cmd("colorscheme catppuccin-macchiato")
     end,
