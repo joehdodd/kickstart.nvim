@@ -88,7 +88,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -113,7 +113,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -189,14 +189,14 @@ require('lazy').setup({
     },
   },
 
---  {
---    -- Theme inspired by Atom
---    'navarasu/onedark.nvim',
---    priority = 1000,
---    config = function()
---      vim.cmd.colorscheme 'onedark'
---    end,
---  },
+  --  {
+  --    -- Theme inspired by Atom
+  --    'navarasu/onedark.nvim',
+  --    priority = 1000,
+  --    config = function()
+  --      vim.cmd.colorscheme 'onedark'
+  --    end,
+  --  },
 
   {
     -- Set lualine as statusline
@@ -219,7 +219,7 @@ require('lazy').setup({
     -- See `:help ibl`
     main = 'ibl',
     opts = {
-      exclude = { filetypes = { 'dashboard' }},
+      exclude = { filetypes = { 'dashboard' } },
     },
   },
 
@@ -350,9 +350,7 @@ require('telescope').setup {
       },
     },
   },
-  extensions = {
-
-  }
+  extensions = {},
 }
 
 -- Enable telescope fzf native, if installed
@@ -505,7 +503,7 @@ local on_attach = function(_, bufnr)
   -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
     if desc then
-      desc = 'LSP: ' .. desc
+      desc = desc .. ' (LSP)'
     end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
@@ -533,10 +531,8 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
+  -- Format with LSP
+  nmap('<leader>fl', vim.lsp.buf.format, '[F]ormat with [L]SP')
 end
 
 -- document existing key chains
@@ -667,4 +663,3 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
