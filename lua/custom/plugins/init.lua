@@ -3,18 +3,6 @@
 --
 -- See the kickstart.nvim README for more information
 return { {
-    "folke/which-key.nvim",
-    opts = {
-        defaults = {
-            ["<leader>f"] = { name = "+[F]ile Explorer" },
-        },
-    },
-    config = function(_, opts)
-        local wk = require("which-key")
-        wk.setup(opts)
-        wk.register(opts.defaults)
-    end,
-}, {
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
