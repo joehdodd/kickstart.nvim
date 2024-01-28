@@ -15,8 +15,8 @@ return {
         require("telescope").load_extension "file_browser"
     end,
     keys = { {
-        '<leader>fb',
+        '<leader>sb',
         '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>',
-        desc = 'File Browser - Toggle'
+        desc = '[B]rowse Files'
     } },
 }
