@@ -16,8 +16,4 @@ return {
     }
     vim.cmd 'colorscheme catppuccin-macchiato'
   end,
-  keys = {
-    { '<leader>tcd', ':Catppuccin macchiato<CR>', desc = 'Catppuccin Macchiato' },
-    { '<leader>tcl', ':Catppuccin latte<CR>', desc = 'Catppuccin Latte' },
-  },
 }
