@@ -1,6 +1,6 @@
 return {
   'catppuccin/nvim',
-  lazy = true,
+  lazy = false,
   name = 'catppuccin',
   config = function()
     require('catppuccin').setup {
@@ -14,6 +14,5 @@ return {
         },
       },
     }
-    vim.cmd 'colorscheme catppuccin-macchiato'
   end,
 }

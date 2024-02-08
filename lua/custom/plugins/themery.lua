@@ -8,7 +8,7 @@ return {
         { colorscheme = 'tokyonight-storm', name = 'TokyoNight Storm' },
         { colorscheme = 'tokyonight-day', name = 'TokyoNight Day' },
       },
-      themeConfigFile = '~/.config/nvim/lua/theme.lua',
+      themeConfigFile = '~/.config/nvim/init.lua',
       livePreview = true,
     }
   end,
