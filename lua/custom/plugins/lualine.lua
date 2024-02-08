@@ -1,4 +1,4 @@
-local lualine = require('lualine')
+local lualine = require 'lualine'
 
 local config = {
   sections = {
@@ -11,24 +11,24 @@ local config = {
         -- 2: Absolute path
         -- 3: Absolute path, with tilde as the home directory
         -- 4: Filename and parent dir, with tilde as the home directory
-      }
+      },
     },
     -- These will be filled later
     lualine_x = {},
+    lualine_y = {
+      'progress',
+      'location',
+    },
+    lualine_z = {},
   },
   inactive_sections = {
     -- these are to remove the defaults
     lualine_x = {},
+    lualine_z = {},
   },
 }
 
--- Inserts a component in lualine_c at left section
-local function ins_right(component)
-  table.insert(config.sections.lualine_x, component)
-end
-
-ins_right {
-  -- Lsp server name .
+table.insert(config.sections.lualine_x, {
   function()
     local msg = 'No Active Lsp'
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
@@ -44,13 +44,19 @@ ins_right {
     end
     return msg
   end,
-  icon = ' LSP:',
-  color = { fg = '#ffffff', gui = 'bold' },
-}
+  icon = '',
+})
+
+table.insert(config.sections.lualine_z, {
+  function()
+    local cwd = vim.fn.getcwd()
+    return cwd
+  end,
+})
 
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
     lualine.setup(config)
-  end
+  end,
 }
