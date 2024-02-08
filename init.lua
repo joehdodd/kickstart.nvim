@@ -271,6 +271,12 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {})
 
+-- Themery block
+-- This block will be replaced by Themery.
+vim.cmd("colorscheme tokyonight-storm")
+vim.g.theme_id = 3
+-- end themery block
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
