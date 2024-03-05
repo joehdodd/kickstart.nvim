@@ -1321,11 +1321,9 @@ cmp.setup {
     { name = 'luasnip' },
     { name = 'path' },
   },
-=======
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   -- { import = 'custom.plugins' },
->>>>>>> b83b2b061c1fab0e1a3a28c185345be7957e74cd
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
