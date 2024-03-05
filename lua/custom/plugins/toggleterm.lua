@@ -4,7 +4,7 @@ return {
     lazy = false,
     config = function()
         require("toggleterm").setup({
-            size = 10,
+            size = 20,
             open_mapping = [[<c-\>]],
             direction = "horizontal"
         })
