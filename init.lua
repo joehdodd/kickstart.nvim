@@ -830,7 +830,7 @@ require('lazy').setup {
 }
 -- Themery block
 -- This block will be replaced by Themery.
-vim.cmd 'colorscheme tokyonight-storm'
+vim.cmd("colorscheme tokyonight-storm")
 vim.g.theme_id = 3
 -- end themery block
 -- The line beneath this is called `modeline`. See `:help modeline`
