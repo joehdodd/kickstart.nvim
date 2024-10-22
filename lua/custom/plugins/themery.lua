@@ -4,11 +4,11 @@ return {
     require('themery').setup {
       themes = {
         { colorscheme = 'catppuccin-macchiato', name = 'Catppuccin Macchiato' },
+        { colorscheme = 'catppuccin-frappe', name = 'Catppuccin Frappe' },
         { colorscheme = 'catppuccin-latte', name = 'Catppuccin Latte' },
         { colorscheme = 'tokyonight-storm', name = 'TokyoNight Storm' },
         { colorscheme = 'tokyonight-day', name = 'TokyoNight Day' },
       },
-      themeConfigFile = '~/.config/nvim/init.lua',
       livePreview = true,
     }
   end,
