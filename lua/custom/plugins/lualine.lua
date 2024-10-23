@@ -1,6 +1,10 @@
 local lualine = require 'lualine'
 
 local config = {
+  extensions = { 'neo-tree' },
+  options = {
+    disabled_filetypes = { statusline = { 'dashboard', 'NeoTree', 'packer', 'neo-tree' } },
+  },
   sections = {
     lualine_c = {
       {
