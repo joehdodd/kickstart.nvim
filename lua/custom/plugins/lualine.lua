@@ -1,5 +1,3 @@
-local lualine = require 'lualine'
-
 local config = {
   extensions = { 'neo-tree' },
   sections = {
@@ -58,6 +56,6 @@ table.insert(config.sections.lualine_z, {
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
-    lualine.setup(config)
+    require('lualine').setup(config)
   end,
 }
