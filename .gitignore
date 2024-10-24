@@ -2,10 +2,6 @@ tags
 test.sh
 .luarc.json
 nvim
-<<<<<<< HEAD
-.DS_store
-=======
-
 spell/
 lazy-lock.json
->>>>>>> b83b2b061c1fab0e1a3a28c185345be7957e74cd
+.DS_store
