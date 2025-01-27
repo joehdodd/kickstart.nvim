@@ -14,7 +14,6 @@ return {
         },
       },
     }
-    vim.cmd.colorscheme 'catppuccin-frappe'
     vim.g.theme_id = 2
   end,
 }
