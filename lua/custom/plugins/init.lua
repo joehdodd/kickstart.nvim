@@ -2,15 +2,17 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return { {
-    'akinsho/bufferline.nvim',
-    version = "*",
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-        require("bufferline").setup({
-            options = {
-                diagnostics = "nvim_lsp"
-            }
-        })
-    end
-} }
+return {
+  {
+    --  'akinsho/bufferline.nvim',
+    --  version = "*",
+    --  dependencies = 'nvim-tree/nvim-web-devicons',
+    --  config = function()
+    --      require("bufferline").setup({
+    --          options = {
+    --              diagnostics = "nvim_lsp"
+    --          }
+    --      })
+    --  end
+  },
+}
