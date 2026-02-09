@@ -1,7 +1,13 @@
 return {
   'carlos-algms/agentic.nvim',
   opts = {
-    provider = 'opencode-acp', -- or gemini-acp, codex-acp, opencode-acp
+    provider = 'copilot-acp',
+    acp_providers = {
+      ['copilot-acp'] = {
+        command = 'copilot-acp', -- or the command for your Copilot ACP backend
+        args = {},
+      },
+    },
     debug = true,
   },
   keys = {
